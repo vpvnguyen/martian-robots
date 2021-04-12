@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useGridDimensionsContext } from "./InstructionsContext";
 import InstructionsMapper from "./InstructionsMapper";
-import { InstructionsFormError } from "./InstructionsErrorHandling";
 
 const initialInputStringState: string = "";
 
