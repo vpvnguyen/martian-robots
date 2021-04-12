@@ -49,9 +49,9 @@ export default class InstructionsValidation {
       );
 
       if (
-        xPosIsNotValid &&
-        yPosIsNotValid &&
-        orientationIsNotValid &&
+        xPosIsNotValid ||
+        yPosIsNotValid ||
+        orientationIsNotValid ||
         commandsIsNotValid
       ) {
         throw new Error("Robot Commands are not valid!");
@@ -99,9 +99,9 @@ export default class InstructionsValidation {
     const [width, height] = gridDimensions;
 
     if (
-      isNaN(width) &&
-      isNaN(height) &&
-      width > MAX_GRID_DIMENSION &&
+      isNaN(width) ||
+      isNaN(height) ||
+      width > MAX_GRID_DIMENSION ||
       height > MAX_GRID_DIMENSION
     ) {
       throw new Error(`Invalid Grid Dimensions!`);

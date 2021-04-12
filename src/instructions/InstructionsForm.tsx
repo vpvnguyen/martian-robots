@@ -24,10 +24,7 @@ const InstructionsForm = () => {
         height: gridDimensions[1],
       });
     } catch (error) {
-      console.error("error:", error);
-      throw new InstructionsFormError(
-        "There was an issue submitting the form!"
-      );
+      console.error("There was an issue submitting instructions!", error);
     }
   };
 
