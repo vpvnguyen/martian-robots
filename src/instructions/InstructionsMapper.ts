@@ -25,7 +25,6 @@ export default class InstructionsMapper {
     try {
       const instructionsSet = this.parseInputString(this.inputString);
 
-      // validate if robot commands are correct (not divisible by 2)
       InstructionsValidation.validateInstructionsLength(instructionsSet);
 
       const { gridDimensions, robotCommands } = this.mapInstructions(
