@@ -1,10 +1,21 @@
 # martian-robots
 
+## How to Run
+
+> Requirements:
+> Yarn or NPM
+> Delete `yarn.lock` if installing with NPM
+
+- `git clone` repository and `cd` into the root of the project.
+- Run `yarn install` to install dependencies.
+- Run `yarn start` to start development server
+- Navigate to `http://localhost:3000` and enjoy!
+
 ## Technologies
 
-- React
-- TypeScript
-- TailwindCSS
+- React 17.0.2
+- TypeScript 4.1.2
+- TailwindCSS 2.1.0
 
 ## Design
 
@@ -43,7 +54,7 @@ The project was designed to be 3 primary parts:
 - I wanted to follow the project guidelines as closely as possible while keeping the packages as small as possible.
 - Some things I started but did not complete:
 
-1. Refactor the styling since it was in a very experimental state. Tailwind CSS isn't very useful given the dynamic Grid.
+1. Refactor the styling since it was in a very experimental state. Tailwind CSS isn't very useful given the dynamic Grid. Instead, create and abstract into layers where it is responsible for 1) layouts, 2) component arrangements, 3) self-contained component styles decoupled from logic.
 2. Refactor the Validation library to be more robust while reducing the computation costs.
 3. Complete the type definitions across the files and abstract them into their own type / interface files.
 4. Leverage and use the Error handling library and replace the new Errors thrown across the app.
