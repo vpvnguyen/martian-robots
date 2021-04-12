@@ -59,7 +59,7 @@ The project was designed into 3 primary parts:
 - Some things I started but did not complete:
 
 1. Refactor the styling since it was in a very experimental state. Instead, create and abstract into layers where it is responsible for 1) layouts, 2) component arrangements, 3) self-contained component styles decoupled from logic.
-2. Design a UI / UX friendly presetational layer - guiding users with instructions on how to use the app and how to handle errors.
+2. Design a UI / UX friendly presentational layer - guiding users with instructions on how to use the app and handle errors.
 3. Refactor the Validation library to be more robust while reducing the computation costs.
 4. Complete the type definitions across the files and abstract them into their own type / interface files.
 5. Leverage and use the Error handling library and replace the new Errors thrown across the app.
