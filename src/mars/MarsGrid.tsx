@@ -1,19 +1,19 @@
 import { useGridDimensionsContext } from "../instructions/InstructionsContext";
 
+const createCoordinates = (width: number, height: number) => {
+  const coordinates = [];
+  for (let yPosition = 0; yPosition < height; yPosition++) {
+    for (let xPosition = 0; xPosition < width; xPosition++) {
+      coordinates.push(`${xPosition},${yPosition}`);
+    }
+  }
+  return coordinates.reverse();
+};
+
 const MarsGrid = () => {
   const {
     gridDimensions: { width, height },
   } = useGridDimensionsContext();
-
-  const createCoordinates = (width: number, height: number) => {
-    const coordinates = [];
-    for (let yPosition = 0; yPosition < height; yPosition++) {
-      for (let xPosition = 0; xPosition < width; xPosition++) {
-        coordinates.push(`${xPosition},${yPosition}`);
-      }
-    }
-    return coordinates.reverse();
-  };
 
   const coordinates = createCoordinates(width, height);
 

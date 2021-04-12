@@ -60,11 +60,12 @@ The project was designed into 3 primary parts:
 - I wanted to follow the project guidelines as closely as possible while keeping the packages as small as possible.
 - Some things I started but did not complete:
 
-1. Refactor the styling since it was in a very experimental state. Tailwind CSS isn't very useful given the dynamic Grid. Instead, create and abstract into layers where it is responsible for 1) layouts, 2) component arrangements, 3) self-contained component styles decoupled from logic.
-2. Refactor the Validation library to be more robust while reducing the computation costs.
-3. Complete the type definitions across the files and abstract them into their own type / interface files.
-4. Leverage and use the Error handling library and replace the new Errors thrown across the app.
-5. Actually finishing the assignment!
+1. Refactor the styling since it was in a very experimental state. Instead, create and abstract into layers where it is responsible for 1) layouts, 2) component arrangements, 3) self-contained component styles decoupled from logic.
+2. Design a UI / UX friendly presetational layer - guiding users with instructions on how to use the app and how to handle errors.
+3. Refactor the Validation library to be more robust while reducing the computation costs.
+4. Complete the type definitions across the files and abstract them into their own type / interface files.
+5. Leverage and use the Error handling library and replace the new Errors thrown across the app.
+6. Actually finishing the assignment!
 
 ## The Challenge
 
