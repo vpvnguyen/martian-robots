@@ -2,9 +2,7 @@
 
 ## How to Run
 
-> Requirements:
-> Yarn or NPM
-> Delete `yarn.lock` if installing with NPM
+> Requirements: Yarn or NPM
 
 - `git clone` repository and `cd` into the root of the project.
 - Run `yarn install` to install dependencies.
