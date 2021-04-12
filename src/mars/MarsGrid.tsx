@@ -12,16 +12,10 @@ const MarsGrid = () => {
         coordinates.push(`${xPosition},${yPosition}`);
       }
     }
-    return coordinates;
-  };
-
-  const createGrid = (coordinates: string[]) => {
-    const reversedCoordinates = coordinates.reverse();
-    return reversedCoordinates;
+    return coordinates.reverse();
   };
 
   const coordinates = createCoordinates(width, height);
-  const reversedCoordinates = createGrid(coordinates);
 
   return (
     <>
@@ -38,7 +32,7 @@ const MarsGrid = () => {
             direction: "rtl",
           }}
         >
-          {reversedCoordinates.map((value: any) => (
+          {coordinates.map((value: any) => (
             <div
               key={value}
               className="border border-gray-500 text-center align-baseline text-tiny"
