@@ -4,8 +4,8 @@ export class InstructionsMapperError extends Error {
     this.name = this.constructor.name;
   }
 
-  public static getMappedInstructionsError = (error: Error) => {
-    console.error("Error mapping instructions.", error);
+  public static constructorError = (error: Error) => {
+    console.error("Error during constructing instructions map.", error);
   };
 }
 
