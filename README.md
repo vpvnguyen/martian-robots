@@ -27,15 +27,15 @@ The project was designed to be 3 primary parts:
 
 ### Instructions Form - Parse, Interpret, and Validate
 
-- Large text area to support the user to enter a long string as suggest by the sample input.
+- Created a large text area to support a long string user input as suggest by the instructions and sample input.
 - When the user submits the form, an Instructions Mapper interprets and parses the single input.
-- An Instructions Validation library to validate and stop execution as early as possible.
-- An Instructions Error Handling library to help trace through the Error Stack to help debug any oversights.
+- Created an Instructions Validation library to validate and stop execution as early as possible - checking against cases such as length, type, format, etc.
+- Created an Instructions Error Handling library to help trace through the Error Stack to help debug any oversights.
 - Once the data has been parsed and validated, an Instructions Context Provider shares the grid dimensions and robot commands across necessary components.
 
 ### Mars Grid - Dynamically Render and Plot Coordinates to a Responsive Grid
 
-- Leverage CSS Grid to dynamically create a Grid for our robot to move.
+- Leveraged CSS Grid to dynamically create a Grid for our robot to move.
 - The Grid will dynamically render based on the user's input.
 - The next steps are to be plotting the robot's starting position and orientation.
 - Utilize a mixture of the robot's state and CSS to navigate across the Grid.
