@@ -27,13 +27,17 @@ The project was designed to be 3 primary parts:
 
 ### Instructions Form - Parse, Interpret, and Validate
 
-- Created a large text area to support a long string user input as suggest by the instructions and sample input.
-- When the user submits the form, an Instructions Mapper interprets and parses the single input.
-- Created an Instructions Validation library to validate and stop execution as early as possible - checking against cases such as length, type, format, etc.
-- Created an Instructions Error Handling library to help trace through the Error Stack to help debug any oversights.
-- Once the data has been parsed and validated, an Instructions Context Provider shares the grid dimensions and robot commands across necessary components.
+> `./src/instructions/`
+
+- Created a large text area (`InstructionsForm.tsx`) to support a long string user input as suggest by the instructions and sample input.
+- When the user submits the form, an Instructions Mapper (`InstructionsMapper.ts`) interprets and parses the single input.
+- Created an Instructions Validation library (`InstructionsValidation.ts`) to validate and stop execution as early as possible - checking against cases such as length, type, format, etc.
+- Created an Instructions Error Handling library (`InstructionsErrorHandling.ts`) to help trace through the Error Stack to help debug any oversights.
+- Once the data has been parsed and validated, an Instructions Context Provider (`InstructionsContext.tsx`) shares the grid dimensions and robot commands across necessary components.
 
 ### Mars Grid - Dynamically Render and Plot Coordinates to a Responsive Grid
+
+> `./src/mars/`
 
 - Leveraged CSS Grid to dynamically create a Grid for our robot to move.
 - The Grid will dynamically render based on the user's input.
@@ -42,6 +46,8 @@ The project was designed to be 3 primary parts:
 - Add animations and markers to convey robot's movement and when it encounters the edge.
 
 ### Robot - Create a Stateful Manager to Track Stats
+
+> `./src/robot/`
 
 - For now, a placeholder component was created for our robot.
 - The next steps are to create a state machine to manage and track our robot's progress.
