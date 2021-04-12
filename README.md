@@ -1,6 +1,6 @@
 # martian-robots
 
-## How to Run
+## How To Run
 
 > Requirements: Yarn or NPM
 
@@ -8,6 +8,12 @@
 - Run `yarn install` to install dependencies.
 - Run `yarn start` to start development server.
 - Navigate to `http://localhost:3000` and enjoy!
+
+## How To Use App
+
+- Input instructions into the form text area. Separate commands with new lines.
+- Click submit.
+- See sample input in the last section of this README for example.
 
 ## Technologies
 
