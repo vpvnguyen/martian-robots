@@ -1,29 +1,44 @@
+import InstructionsValidation from "./InstructionsValidation";
 import { InstructionsMapperError } from "./InstructionsErrorHandling";
 
 export default class InstructionsMapper {
   private readonly INPUT_SEPARATOR: string = "\n";
   private readonly inputString: string;
-  private gridDimensions: string | null | undefined;
-  private robotCommands: string[] | null | undefined;
+  private gridDimensions: any;
+  private robotCommands: {
+    xPos: string | null | undefined;
+    yPos: string | null | undefined;
+    orientation: string | null | undefined;
+    commands: string | null | undefined;
+  };
 
   constructor(inputString: string) {
     this.inputString = inputString;
     this.gridDimensions = null;
-    this.robotCommands = null;
+    this.robotCommands = {
+      xPos: null,
+      yPos: null,
+      orientation: null,
+      commands: null,
+    };
 
     try {
-      const instructionsSet = this.parseInstructionsSet(this.inputString);
-      const filteredInstructions = this.filterInstructions(instructionsSet);
-      const trimmedInstructions = this.trimInstructions(filteredInstructions);
-      const { gridDimensions, unmappedInstructions } = this.mapGridDimensions(
-        trimmedInstructions
+      const instructionsSet = this.parseInputString(this.inputString);
+
+      // validate if robot commands are correct (not divisible by 2)
+      InstructionsValidation.validateInstructionsLength(instructionsSet);
+
+      const { gridDimensions, robotCommands } = this.mapInstructions(
+        instructionsSet
       );
-      const robotCommands = this.mapRobotCommands(unmappedInstructions);
+
+      InstructionsValidation.validateGridDimensions(gridDimensions);
+      InstructionsValidation.validateRobotCommands(robotCommands);
 
       this.setGridDimensions(gridDimensions);
       this.setRobotCommands(robotCommands);
     } catch (error) {
-      InstructionsMapperError.getMappedInstructionsError(error);
+      InstructionsMapperError.constructorError(error);
     }
   }
 
@@ -39,13 +54,17 @@ export default class InstructionsMapper {
     this.robotCommands = robotCommands;
   };
 
-  private parseInstructionsSet = (inputString: string) => {
+  private parseInputString = (inputString: string) => {
     const instructionSet = inputString.trim().split(this.INPUT_SEPARATOR);
-    return instructionSet;
+    const trimmedInstructions = this.trimInstructions(instructionSet);
+    const filteredInstructionsSet = this.removeEmptyElements(
+      trimmedInstructions
+    );
+    return filteredInstructionsSet;
   };
 
-  private filterInstructions = (instructions: string[]) => {
-    const filteredInstructions = instructions.filter(
+  private removeEmptyElements = (unfilteredInstructions: string[]) => {
+    const filteredInstructions = unfilteredInstructions.filter(
       (instruction: string) => instruction
     );
     return filteredInstructions;
@@ -58,24 +77,41 @@ export default class InstructionsMapper {
     return trimmedInstructions;
   };
 
-  private mapGridDimensions = (instructions: string[]) => {
-    const [gridDimensions, ...restOfInstructions] = instructions;
+  private parseRobotCommands = (array: string[]) => {
+    const robotCoordinates = array.filter((element, index) => index % 2 === 0);
+    const robotMoveCommands = array.filter((element, index) => index % 2 !== 0);
+
+    const robotCommands = robotCoordinates.map((element, index) => {
+      const splitCoordinates = element.split(" ");
+      return {
+        xPos: splitCoordinates[0],
+        yPos: splitCoordinates[1],
+        orientation: splitCoordinates[2],
+        commands: robotMoveCommands[index],
+      };
+    });
+
+    return robotCommands;
+  };
+
+  private mapInstructions = (instructions: string[]) => {
+    const [dimensions, ...restOfInstructions] = instructions;
+    const gridDimensions = this.setGridDimensionsToNumber(dimensions);
+    const robotCommands = this.parseRobotCommands(restOfInstructions);
     return {
       gridDimensions,
-      unmappedInstructions: [...restOfInstructions],
+      robotCommands,
     };
   };
 
-  private filterGridDimensions = (gridDimensions: string) => {
-    const unfilteredDimensions = gridDimensions.split(" ");
-    console.log("unfilteredDimensions", unfilteredDimensions);
-    const filteredGridDimensions = unfilteredDimensions.filter(
-      (dimension: any) => dimension
+  private setGridDimensionsToNumber = (dimensions: string) => {
+    const dimensionsList = dimensions.split(" ");
+    const filteredDimensions = dimensionsList.filter(
+      (dimension: string) => dimension
     );
-    return filteredGridDimensions;
-  };
+    const width = Number(filteredDimensions[0]);
+    const height = Number(filteredDimensions[1]);
 
-  private mapRobotCommands = (unmappedInstructions: any) => {
-    console.log("unmappedInstructions", unmappedInstructions);
+    return [width, height];
   };
 }
