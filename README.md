@@ -8,7 +8,7 @@
 
 - `git clone` repository and `cd` into the root of the project.
 - Run `yarn install` to install dependencies.
-- Run `yarn start` to start development server
+- Run `yarn start` to start development server.
 - Navigate to `http://localhost:3000` and enjoy!
 
 ## Technologies
@@ -19,7 +19,7 @@
 
 ## Design
 
-The project was designed to be 3 primary parts:
+The project was designed into 3 primary parts:
 
 - Instructions Form
 - Mars Grid
