@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useGridDimensionsContext } from "./InstructionsContext";
 import InstructionsMapper from "./InstructionsMapper";
+import { useRobotContext } from "../robot/RobotContext";
 
 const initialInputStringState: string = "";
 
 const InstructionsForm = () => {
   const [inputString, setInputString] = useState(initialInputStringState);
   const { setGridDimensions } = useGridDimensionsContext();
+  const { setRobotCommands } = useRobotContext();
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
@@ -17,6 +19,8 @@ const InstructionsForm = () => {
 
       // TODO:
       // save robotCommands to state
+      console.log(robotCommands);
+      setRobotCommands(robotCommands);
 
       setGridDimensions({
         width: gridDimensions[0],
